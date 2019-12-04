@@ -14,6 +14,8 @@ public class Kata5 {
         
         database.select_PERSONAS();
         
+        
+        database.createTable_EMAIL();
         database.close();
     }
     

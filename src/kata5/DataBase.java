@@ -72,4 +72,19 @@ public class DataBase {
             System.out.println("ERROR Database: can not insert into personas " + ex.getMessage());
         }
     }
+    
+    void createTable_EMAIL() {
+        try{
+        
+            String SQL = "CREATE TABLE `EMAIL` ("
+                + "`ID`	INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "`Mail`	TEXT NOT NULL)";
+        
+            Statement statement = this.connection.createStatement();
+            ResultSet resultset = statement.executeQuery(SQL);
+        } 
+        catch (SQLException ex){
+            System.out.println("ERROR Database: can not create table " + ex.getMessage());
+        }
+    }
 }

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class DataBase {
     private final String URL;
@@ -85,6 +86,22 @@ public class DataBase {
         } 
         catch (SQLException ex){
             System.out.println("ERROR Database: can not create table " + ex.getMessage());
+        }
+    }
+
+    void insert_EMAIL(List<String> mailList) {
+        String SQL = "INSERT INTO EMAIL (MAIL) VALUES (?)";
+        
+        
+        for(String str : mailList){
+            try{
+                PreparedStatement preparedStatement = this.connection.prepareStatement(SQL);
+                preparedStatement.setString(1, str);
+                preparedStatement.executeUpdate();
+            }
+            catch (SQLException ex){
+                System.out.println("ERROR Database: can not insert into email " + ex.getMessage());
+            }   
         }
     }
 }
